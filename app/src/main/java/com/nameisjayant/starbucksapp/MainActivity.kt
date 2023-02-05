@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.nameisjayant.starbucksapp.screens.HomeScreen
+import com.nameisjayant.starbucksapp.screens.ProductDetailScreen
 import com.nameisjayant.starbucksapp.screens.StartScreen
 import com.nameisjayant.starbucksapp.ui.theme.StarbucksAppTheme
 
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    HomeScreen()
+                    ProductDetailScreen()
                 }
             }
         }

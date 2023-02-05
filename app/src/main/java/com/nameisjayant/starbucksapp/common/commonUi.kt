@@ -3,6 +3,7 @@ package com.nameisjayant.starbucksapp.common
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -22,14 +23,17 @@ fun AppIcon(
     @DrawableRes icon: Int,
     tint: Color = Color.Unspecified,
      modifier: Modifier = Modifier,
-    background:Color = LightGray
+    background:Color = LightGray,
+    onClick:()->Unit  = {}
 ) {
 
     Box(
         modifier = modifier
             .size(46.dp)
             .clip(CircleShape)
-            .background(background),
+            .background(background)
+            .clickable { onClick() }
+        ,
         contentAlignment = Alignment.Center
     ) {
         Icon(

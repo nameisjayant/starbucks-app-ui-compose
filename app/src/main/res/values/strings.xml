@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">starbucks app</string>
+    <string name="add_to_bag">Add to bag</string>
 </resources>
