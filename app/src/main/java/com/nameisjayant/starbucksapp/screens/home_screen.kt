@@ -2,6 +2,7 @@ package com.nameisjayant.starbucksapp.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -22,13 +23,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.nameisjayant.starbucksapp.common.AppIcon
 import com.nameisjayant.starbucksapp.R
+import com.nameisjayant.starbucksapp.navigation.DETAIL_SCREEN
 import com.nameisjayant.starbucksapp.ui.theme.*
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navHostController: NavHostController
+) {
     var search by remember { mutableStateOf("") }
     val menuList = listOf("All", "Coffee", "Tea", "Drinks", "Beer", "Wine")
     var selected by remember { mutableStateOf("All") }
@@ -80,7 +85,7 @@ fun HomeScreen() {
                     }
                 }
                 item {
-                    Popular()
+                    Popular(navHostController)
                 }
             }
         }
@@ -88,7 +93,9 @@ fun HomeScreen() {
 }
 
 @Composable
-fun Popular() {
+fun Popular(
+    navHostController: NavHostController
+) {
 
     Column(
         modifier = Modifier
@@ -121,7 +128,9 @@ fun Popular() {
         Spacer(modifier = Modifier.height(10.dp))
         LazyRow {
             items(5) {
-                ItemEachRow()
+                ItemEachRow{
+                    navHostController.navigate(DETAIL_SCREEN)
+                }
             }
         }
     }
@@ -129,7 +138,9 @@ fun Popular() {
 }
 
 @Composable
-fun ItemEachRow() {
+fun ItemEachRow(
+    onClick:()->Unit
+) {
 
     var selected by remember { mutableStateOf(false) }
 
@@ -137,6 +148,7 @@ fun ItemEachRow() {
     Card(
         shape = RoundedCornerShape(14.dp),
         modifier = Modifier
+            .clickable { onClick() }
             .width(220.dp)
             .padding(end = 10.dp),
     ) {

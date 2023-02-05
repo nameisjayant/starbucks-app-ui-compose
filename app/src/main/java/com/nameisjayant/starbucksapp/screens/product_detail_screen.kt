@@ -24,13 +24,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.nameisjayant.starbucksapp.R
 import com.nameisjayant.starbucksapp.common.AppIcon
 import com.nameisjayant.starbucksapp.ui.theme.*
 
 
 @Composable
-fun ProductDetailScreen() {
+fun ProductDetailScreen(
+    navHostController: NavHostController
+) {
 
     Box(
         modifier = Modifier
@@ -43,7 +46,7 @@ fun ProductDetailScreen() {
                 .fillMaxSize()
                 .padding(20.dp)
         ) {
-            ProductHeader()
+            ProductHeader(navHostController)
             LazyColumn {
                 item {
                     ShowProduct()
@@ -224,7 +227,9 @@ fun AppButton(
 
 
 @Composable
-fun ProductHeader() {
+fun ProductHeader(
+    navHostController: NavHostController
+) {
 
 
     Row(
@@ -233,7 +238,9 @@ fun ProductHeader() {
             .padding(top = 30.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        AppIcon(icon = R.drawable.back)
+        AppIcon(icon = R.drawable.back){
+            navHostController.navigateUp()
+        }
         Icon(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "",
