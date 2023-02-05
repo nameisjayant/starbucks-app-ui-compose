@@ -1,6 +1,6 @@
 # starbucks app ui compose
 
-A simple starbucks app ui in jetpack compose
+A simple starbucks app ui in jetpack compose 😍
 
 ### Screenshots
 
